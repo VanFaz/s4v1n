@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
 def fibonacci_numbers_up_to(limit):
     fib = [1, 1]
@@ -7,9 +6,10 @@ def fibonacci_numbers_up_to(limit):
         fib.append(fib[-1] + fib[-2])
     return fib
 
+
 def fib_search(f, a, b, eps):
     history = []
-    
+
     L0 = (b - a) / (2 * eps)
     fib = fibonacci_numbers_up_to(L0)
     n = len(fib) - 1
@@ -39,9 +39,10 @@ def fib_search(f, a, b, eps):
 
     return (a + b) / 2, history
 
+
 def fib_search2(f, a, b, eps):
     history = []
-    
+
     L0 = (b - a) / (2 * eps)
     fib = fibonacci_numbers_up_to(L0)
     n = len(fib) - 1
@@ -68,23 +69,21 @@ def fib_search2(f, a, b, eps):
             f_z = f(z)
 
         history.append([a, b])
-    print(y,z)
+    history.append([a, b])
+    print(y, z)
     return (a + b) / 2, history
 
+
 def f(x):
-    return x**2 - 2*x + 5
+    return x ** 2 - 2 * x + 5
+
 
 a, b = -2, 8
-eps = 0.005
-
-# x_star, history = fib_search(f, a, b, eps)
-# print("x* ≈", x_star, "+-", eps)
-# print("f(x*) ≈", f(x_star))
-
-# plot_fib(f, a, b, history, x_star)
-# print()
+eps = 0.5
 
 x_star, history = fib_search2(f, a, b, eps)
-print("x* ≈", x_star, "+-", eps)
+final_interval = history[-1]
+a_final, b_final =history[-1]
+print(final_interval)
+print("x* ≈", x_star, "+-", (b_final-a_final)/2)
 print("f(x*) ≈", f(x_star))
-
