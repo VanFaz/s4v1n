@@ -75,3 +75,10 @@ def steepest_descent(x0, eps1=1e-6, eps2=1e-6, M=100):
         k += 1
 
     return x, f(x), history
+
+x0 = np.array([3, 1])
+
+xmin, fmin, history = steepest_descent(x0)
+
+print("Точка:", xmin)
+print("Значение:", fmin)
